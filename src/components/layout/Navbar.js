@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Navbar = ({ icon, title }) => (
   <nav className="navbar bg-primary">
@@ -10,14 +11,14 @@ const Navbar = ({ icon, title }) => (
   </nav>
 );
 
-Navbar.isRequired = {
-  icon: 'fab fa-github',
-  title: 'Github Finder',
-};
+// Navbar.isRequired = {
+//   icon: 'fab fa-github',
+//   title: 'Github Finder',
+// };
 
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-};
+// Navbar.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   icon: PropTypes.string.isRequired,
+// };
 
 export default Navbar;

@@ -1,12 +1,16 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const UserItem = ({ user: { login, avatarUrl, htmlUrl } }) => (
+const UserItem = ({ user: { login, avatar_url, html_url } }) => (
   <div className="card text-center">
-    <img src={avatarUrl} alt="" className="round-img" style={{ width: '60px' }} />
+    <img src={avatar_url} alt="" className="round-img" style={{ width: '60px' }} />
     <h3>{login}</h3>
-    <a href={htmlUrl} className="btn btn-dark btn-sm my-1">More</a>
+    <a href={html_url} className="btn btn-dark btn-sm my-1">More</a>
   </div>
 );
+
+UserItem.protoTypes = {
+  user: PropTypes.object.isRequired,
+};
 
 export default UserItem;
