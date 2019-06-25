@@ -5,7 +5,6 @@ const Alert = ({ alert }) => {
     !!alert && (
       <div className={`alert alert-${alert.type}`}>
         <i className="fas fa-exclamation-circle" />{alert.message}
-
       </div>
     )
   )

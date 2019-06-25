@@ -38,7 +38,7 @@ class App extends Component {
       loading: true,
     });
     const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    console.log(res.data.items);
+    // console.log(res.data.items);
     this.setState({
       user: res.data,
       loading: false,
@@ -49,7 +49,8 @@ class App extends Component {
     this.setState({
       loading: true,
     });
-    const res = await axios.get(`https://api.github.com/users/${username}/reposper_equals=5&sort=created:asc&?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    console.log(res.data);
 
     this.setState({
       repos: res.data,
@@ -114,6 +115,7 @@ class App extends Component {
                     getUserRepos={this.getUserRepos}
                     repos={repos}
                     user={user}
+                    repos={repos}
                     loading={loading}/>
               )} />
 
@@ -121,7 +123,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
-      );
+    );
   }
 }
 
