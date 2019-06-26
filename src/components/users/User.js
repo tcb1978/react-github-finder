@@ -86,6 +86,7 @@ const User = ({ user, loading, getUser, getUserRepos, input, repos, match }) => 
       </div>
 
       <Repos repos={repos} />
+
     </Fragment>
   )
 }
