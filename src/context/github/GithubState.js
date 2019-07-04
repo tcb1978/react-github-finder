@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import GithubContext from './GithubContext';
-import GithubReducer from './GithubReducer';
+import GithubContext from './githubContext';
+import GithubReducer from './githubReducer';
 import {
   SEARCH_USERS,
   SET_LOADING,
@@ -84,4 +84,4 @@ const GithubState = props => {
   </GithubContext.Provider>
 }
 
-export default GithubState
+export default GithubState;
