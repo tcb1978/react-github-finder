@@ -12,33 +12,12 @@ import './App.css';
 import GithubState from './context/github/GithubState';
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const [repos, setRepos] = useState([]);
 
-  // Search GitHub Users
-  const searchUsers = async (text) => {
-    setLoading(true);
 
-    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-
-    setUsers(res.data.items);
-    setLoading(false);
-  };
-
-  // Get a single Github user
-  const getUser = async (username) => {
-    setLoading(true);
-
-    const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-
-    setUser(res.data);
-    setLoading(false);
-  };
-
-   const getUserRepos = async (username) => {
+  const getUserRepos = async (username) => {
 
     setLoading(false);
 
@@ -47,12 +26,6 @@ const App = () => {
     setRepos(res.data);
     setLoading(false);
 
-  };
-
-  // Clear users from state
-  const clearUsers = () => {
-    setLoading(false);
-    setUsers([]);
   };
 
   // Set Alert
@@ -74,14 +47,8 @@ const App = () => {
             <Switch>
               <Route exact path="/" render={props => (
                 <Fragment>
-                  <Search
-                    searchUsers={searchUsers}
-                    clearUsers={clearUsers}
-                    showClearButton={users.length > 0 ? true : false}
-                    settingAlert={settingAlert}/>
-                  <Users
-                    loading={loading}
-                    users={users}/>
+                  <Search settingAlert={settingAlert}/>
+                  <Users />
                 </Fragment>
               )}/>
 
@@ -93,11 +60,8 @@ const App = () => {
                 render={props => (
                   <User
                     {...props}
-                    getUser={getUser}
                     getUserRepos={getUserRepos}
-                    user={user}
-                    repos={repos}
-                    loading={loading}/>
+                    repos={repos}/>
               )} />
 
             </Switch>
